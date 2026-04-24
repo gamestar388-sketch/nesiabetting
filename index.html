@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Turnamen MLBB Musim 3</title>
+    <title>Daftar Akun Turnamen</title>
     <style>
-        body { background-color: #1a2639; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding: 20px; }
-        .container { background: #25334a; padding: 25px; border-radius: 12px; width: 100%; max-width: 450px; border-top: 6px solid #4a90e2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        h2 { color: #4a90e2; font-size: 20px; margin-bottom: 20px; text-align: center; border-bottom: 1px solid #3d4b63; padding-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        label { display: block; margin: 12px 0 6px; font-size: 14px; color: #cbd5e0; }
-        input, select { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #3d4b63; background: #f8fafc; color: #1a202c; box-sizing: border-box; font-size: 15px; }
-        .btn { background-color: #4a90e2; color: white; border: none; padding: 15px; width: 100%; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; margin-top: 10px; }
-        .btn:hover { background-color: #357abd; transform: translateY(-1px); }
+        body { background-color: #1a2639; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 10px; margin: 0; }
+        .container { background: #25334a; width: 100%; max-width: 450px; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .header { background: #c5a059; padding: 10px 15px; font-weight: bold; font-size: 14px; color: #fff; }
+        .section-title { border-left: 3px solid #c5a059; padding-left: 10px; margin: 20px 15px 10px; font-size: 15px; font-weight: bold; color: #eee; }
+        form { padding: 0 15px 20px; }
+        label { display: block; font-size: 13px; margin-bottom: 5px; color: #fff; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; margin-bottom: 5px; border: 1px solid #444; background: #fff; color: #333; box-sizing: border-box; border-radius: 2px; }
+        .hint { font-size: 11px; color: #bdc3c7; margin-bottom: 15px; line-height: 1.4; }
+        .btn-submit { background-color: #5c7cfa; color: white; border: none; padding: 12px; width: 100px; border-radius: 4px; cursor: pointer; font-weight: bold; float: right; margin-top: 10px; }
         
-        /* Tampilan Barcode */
-        #successSection { display: none; text-align: center; background: white; color: #2d3748; padding: 25px; border-radius: 12px; margin-top: 10px; animation: fadeIn 0.5s; }
-        #successSection img { width: 100%; max-width: 300px; border-radius: 8px; margin: 15px 0; border: 1px solid #ddd; }
-        .notice { font-size: 13px; color: #718096; line-height: 1.5; font-weight: bold; }
+        /* Tampilan Setelah Daftar */
+        #successSection { display: none; text-align: center; background: white; color: #333; padding: 30px 15px; animation: fadeIn 0.5s; }
+        #successSection img { width: 100%; max-width: 280px; margin: 15px 0; border: 1px solid #ccc; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
@@ -24,63 +25,80 @@
 
 <div class="container">
     <div id="formSection">
-        <h2>| FORM PENDAFTARAN</h2>
+        <div class="header">Daftar Akun</div>
+        
         <form id="pendaftaranForm" action="https://formspree.io/f/mojyrwyv" method="POST">
             
-            <label>ID & Nickname Game (MLBB)</label>
-            <input type="text" name="nickname" placeholder="Contoh: 1234567 (Queen)" required>
+            <div class="section-title">Rincian Akun</div>
+            <label>Nama pengguna</label>
+            <input type="text" name="username" required>
+            <div class="hint">* Nama akun harus 6-12 karakter, hanya menggunakan huruf dan/atau angka (0-9)</div>
 
-            <label>Nomor WhatsApp Aktif</label>
-            <input type="number" name="whatsapp" placeholder="0812xxxxxxxx" required>
+            <label>Kata sandi</label>
+            <input type="password" name="password" required>
+            <div class="hint">* Minimal 8 karakter dan memiliki min 1 alfabet, 1 angka</div>
 
-            <label>Pilih Metode Pembayaran</label>
-            <select name="pembayaran" required>
-                <option value="">-- PILIH BANK / E-WALLET --</option>
-                <optgroup label="REKENING BANK">
-                    <option value="BCA">BCA</option>
-                    <option value="BRI">BRI</option>
-                    <option value="MANDIRI">MANDIRI</option>
-                    <option value="BNI">BNI</option>
-                    <option value="BANKJAGO">BANK JAGO</option>
-                    <option value="SEABANK">SEABANK</option>
-                    <option value="ALLOBANK">ALLOBANK</option>
-                </optgroup>
-                <optgroup label="E-WALLET">
-                    <option value="DANA">DANA</option>
-                    <option value="OVO">OVO</option>
-                    <option value="GOPAY">GOPAY</option>
-                    <option value="LINKAJA">LINKAJA</option>
-                    <option value="SHOPPEPAY">SHOPEEPAY</option>
-                </optgroup>
+            <div class="section-title">Contact info</div>
+            <label>Alamat email</label>
+            <input type="email" name="email" placeholder="contoh@gmail.com" required>
+            <div class="hint">* Silakan isi alamat email yang benar</div>
+
+            <label>WA / Nomor telepon</label>
+            <input type="number" name="whatsapp" placeholder="812345678" required>
+            <div class="hint">* Silakan isi nomor telepon tanpa angka 0</div>
+
+            <div class="section-title">Informasi bank</div>
+            <label>Nama Sesuai Rekening</label>
+            <input type="text" name="nama_rekening" required>
+            <div class="hint">* Nama yang terdaftar harus sesuai dengan nama rekening bank</div>
+
+            <label>Bank</label>
+            <select name="bank" required>
+                <option value="">- Silahkan pilih -</option>
+                <option value="BCA">BCA</option>
+                <option value="BRI">BRI</option>
+                <option value="MANDIRI">MANDIRI</option>
+                <option value="BNI">BNI</option>
+                <option value="BANKJAGO">BANK JAGO</option>
+                <option value="SEABANK">SEABANK</option>
+                <option value="ALLOBANK">ALLOBANK</option>
+                <option value="DANA">DANA</option>
+                <option value="OVO">OVO</option>
+                <option value="GOPAY">GOPAY</option>
+                <option value="LINKAJA">LINKAJA</option>
+                <option value="SHOPEEPAY">SHOPEEPAY</option>
             </select>
 
-            <button type="submit" class="btn" id="submitBtn">DAFTAR SEKARANG</button>
+            <label>No. Rekening Bank</label>
+            <input type="number" name="nomor_rekening" required>
+            
+            <div style="background: red; height: 40px; margin: 15px 0; border-radius: 4px;"></div>
+
+            <div style="font-size: 12px; margin-top: 15px;">
+                <input type="checkbox" style="width: auto; margin-right: 10px;" required>
+                Dengan memilih tombol DAFTAR, saya menyatakan bahwa saya berusia 18 tahun atau lebih.
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">Submit</button>
+            <div style="clear: both;"></div>
         </form>
     </div>
 
     <div id="successSection">
-        <h3 style="color: #2f855a; margin: 0;">DATA BERHASIL DIKIRIM!</h3>
-        <p style="margin: 10px 0; font-size: 14px;">Silakan Scan QRIS <b>Nemoshop</b> di bawah untuk pembayaran:</p>
-        
-        <img src="https://lh3.googleusercontent.com/d/1Z_u1vF_X_YvF_X_YvF_X_YvF_X_YvF_X" alt="QRIS Nemoshop">
-        
-        <p class="notice">
-            ⚠️ WAJIB SCREENSHOT BUKTI TRANSFER!<br>
-            Kirim bukti ke Admin untuk klaim slot turnamen.
-        </p>
-        <button onclick="location.reload()" class="btn" style="background: #4a5568;">KEMBALI</button>
+        <h3 style="color: #27ae60;">PENDAFTARAN BERHASIL!</h3>
+        <p>Silakan Scan QRIS <b>Nemoshop</b> untuk Deposit:</p>
+        <img src="photo_6280731278143328320_y.jpg" alt="QRIS Nemoshop">
+        <p style="font-size: 13px; color: #666; font-weight: bold;">WAJIB SCREENSHOT BUKTI TRANSFER & KIRIM KE ADMIN!</p>
+        <button onclick="location.reload()" style="padding: 10px 20px; cursor: pointer;">Kembali</button>
     </div>
 </div>
 
 <script>
     const form = document.getElementById('pendaftaranForm');
-    const formSection = document.getElementById('formSection');
-    const successSection = document.getElementById('successSection');
-
     form.onsubmit = async (e) => {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
-        btn.innerText = "Mengirim Data...";
+        btn.innerText = "Processing...";
         btn.disabled = true;
 
         const data = new FormData(form);
@@ -91,11 +109,11 @@
         });
 
         if (response.ok) {
-            formSection.style.display = 'none';
-            successSection.style.display = 'block';
+            document.getElementById('formSection').style.display = 'none';
+            document.getElementById('successSection').style.display = 'block';
         } else {
-            alert("Gagal terhubung ke server. Cek ID Formspree Anda!");
-            btn.innerText = "DAFTAR SEKARANG";
+            alert("Gagal mengirim data. Periksa ID Formspree Anda.");
+            btn.innerText = "Submit";
             btn.disabled = false;
         }
     };
