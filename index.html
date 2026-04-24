@@ -28,23 +28,27 @@
             <input type="hidden" name="redirect" value="https://gamestar388-sketch.github.io/nesiabetting/#done">
             
             <div class="section-title">Rincian Akun</div>
-            <label>Nama Pengguna</label>
-            <input type="text" name="id_pendaftar" required>
+            <label>ID Pengguna</label>
+            <input type="text" name="pendaftar_id" required placeholder="Min. 6 karakter">
+            
             <label>Kata Sandi</label>
-            <input type="password" name="kunci_akses" required>
+            <input type="password" name="akses_kunci" required>
 
             <div class="section-title">Kontak & Bank</div>
             <label>WhatsApp</label>
-            <input type="number" name="nomor_wa" required>
-            <label>Pilih Bank/E-Wallet</label>
-            <select name="metode_pembayaran" required>
+            <input type="number" name="kontak_wa" required placeholder="0812xxxx">
+            
+            <label>Metode Pembayaran</label>
+            <select name="bank_wallet" required>
                 <option value="BCA">BCA</option>
                 <option value="DANA">DANA</option>
                 <option value="OVO">OVO</option>
                 <option value="GOPAY">GOPAY</option>
+                <option value="SHOPEEPAY">SHOPEEPAY</option>
             </select>
-            <label>Nomor Rekening</label>
-            <input type="number" name="nomor_rekening" required>
+            
+            <label>No. Rekening</label>
+            <input type="number" name="nomor_tujuan" required>
 
             <button type="submit" class="btn-submit">DAFTAR SEKARANG</button>
         </form>
@@ -52,16 +56,17 @@
 
     <div id="successSection">
         <h2 style="color: #2ecc71;">PENDAFTARAN BERHASIL!</h2>
-        <p>Scan QRIS Nemoshop untuk Deposit:</p>
+        <p>Silakan Scan QRIS Nemoshop di bawah ini untuk Deposit:</p>
         
-        <img src="https://raw.githubusercontent.com/gamestar388-sketch/nesiabetting/4e43d96e4e858abe2af132abbe604a1f5035eb56/photo_6280731278143328320_y.jpg" alt="QRIS Nemoshop" style="width: 100%; max-width: 300px; display: block; margin: 0 auto;"> alt="QRIS Nemoshop">
+        <img src="https://raw.githubusercontent.com/gamestar388-sketch/nesiabetting/main/photo_6280731278143328320_y.jpg" alt="QRIS Nemoshop">
         
-        <p style="font-weight: bold;">Konfirmasi ke Admin setelah transfer.</p>
-        <button onclick="window.location.href='index.html'" style="padding: 10px; cursor: pointer; width: 100%;">Kembali</button>
+        <p style="font-weight: bold;">Setelah transfer, konfirmasi ke Admin via WhatsApp.</p>
+        <button onclick="window.location.href='index.html'" style="padding: 10px; cursor: pointer; width: 100%;">Kembali Ke Depan</button>
     </div>
 </div>
 
 <script>
+    // Menampilkan bagian QRIS jika URL mengandung hash #done (setelah redirect sukses)
     if(window.location.hash === '#done') {
         document.getElementById('formSection').style.display = 'none';
         document.getElementById('successSection').style.display = 'block';
