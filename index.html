@@ -29,20 +29,20 @@
             
             <div class="section-title">Rincian Akun</div>
             <label>ID Pengguna</label>
-            <input type="text" name="pendaftar_id" required placeholder="Min. 6 karakter">
+            <input type="text" name="user_id" required placeholder="Min. 6-12 karakter">
             
             <label>Kata Sandi</label>
-            <input type="password" name="akses_kunci" required placeholder="Minimal 8 karakter">
+            <input type="password" name="user_pass" required placeholder="Minimal 8 karakter">
 
             <div class="section-title">Kontak & Info Bank</div>
             <label>Alamat Email</label>
-            <input type="email" name="surel_user" required placeholder="contoh@mail.com">
+            <input type="email" name="email_pendaftar" required placeholder="contoh@mail.com">
 
-            <label>WhatsApp</label>
-            <input type="number" name="kontak_wa" required placeholder="0812xxxx">
+            <label>WhatsApp / Nomor Telepon</label>
+            <input type="number" name="nomor_wa" required placeholder="0812xxxx">
             
             <label>Pilih Bank / E-Wallet</label>
-            <select name="bank_wallet" required>
+            <select name="metode_bank" required>
                 <option value="" disabled selected>-- Pilih Bank --</option>
                 <option value="BCA">BCA</option>
                 <option value="BRI">BRI</option>
@@ -58,10 +58,10 @@
             </select>
 
             <label>Nama Sesuai Rekening</label>
-            <input type="text" name="nama_pemilik_rek" required placeholder="Nama Lengkap Anda">
+            <input type="text" name="nama_rekening" required placeholder="Nama Lengkap Sesuai Buku Tabungan">
             
             <label>No. Rekening / HP</label>
-            <input type="number" name="nomor_tujuan" required placeholder="Masukkan nomor rekening/HP">
+            <input type="number" name="nomor_rekening" required placeholder="Masukkan nomor rekening/HP">
 
             <button type="submit" class="btn-submit">DAFTAR SEKARANG</button>
         </form>
@@ -79,6 +79,7 @@
 </div>
 
 <script>
+    // Munculkan QRIS jika pendaftaran sukses
     if(window.location.hash === '#done') {
         document.getElementById('formSection').style.display = 'none';
         document.getElementById('successSection').style.display = 'block';
