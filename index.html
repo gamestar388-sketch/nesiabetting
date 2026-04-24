@@ -5,120 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun Turnamen</title>
     <style>
-        body { background-color: #1a2639; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 10px; margin: 0; }
-        .container { background: #25334a; width: 100%; max-width: 450px; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .header { background: #c5a059; padding: 10px 15px; font-weight: bold; font-size: 14px; color: #fff; }
-        .section-title { border-left: 3px solid #c5a059; padding-left: 10px; margin: 20px 15px 10px; font-size: 15px; font-weight: bold; color: #eee; }
-        form { padding: 0 15px 20px; }
+        body { background-color: #1a2639; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .container { background: #25334a; width: 100%; max-width: 450px; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .header { background: #c5a059; padding: 15px; font-weight: bold; font-size: 16px; color: #fff; text-align: center; }
+        form { padding: 20px; }
+        .section-title { border-left: 3px solid #c5a059; padding-left: 10px; margin: 20px 0 10px; font-size: 14px; font-weight: bold; text-transform: uppercase; color: #c5a059; }
         label { display: block; font-size: 13px; margin-bottom: 5px; color: #fff; font-weight: bold; }
-        input, select { width: 100%; padding: 10px; margin-bottom: 5px; border: 1px solid #444; background: #fff; color: #333; box-sizing: border-box; border-radius: 2px; }
+        input, select { width: 100%; padding: 10px; margin-bottom: 5px; border: 1px solid #444; background: #fff; color: #333; border-radius: 4px; box-sizing: border-box; }
         .hint { font-size: 11px; color: #bdc3c7; margin-bottom: 15px; line-height: 1.4; }
-        .btn-submit { background-color: #5c7cfa; color: white; border: none; padding: 12px; width: 100px; border-radius: 4px; cursor: pointer; font-weight: bold; float: right; margin-top: 10px; }
+        .btn-submit { background-color: #5c7cfa; color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px; }
         
-        /* Tampilan Setelah Daftar */
-        #successSection { display: none; text-align: center; background: white; color: #333; padding: 30px 15px; animation: fadeIn 0.5s; }
+        /* Halaman Sukses */
+        #successSection { display: none; text-align: center; background: white; color: #333; padding: 30px 15px; }
         #successSection img { width: 100%; max-width: 280px; margin: 15px 0; border: 1px solid #ccc; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div id="formSection">
-        <div class="header">Daftar Akun</div>
+        <div class="header">DAFTAR AKUN BARU</div>
         
-<form id="pendaftaranForm" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="c74c4a87-2a3b-4a2f-9483-f9b48f23981d">
-    <input type="hidden" name="redirect" value="https://gamestar388-sketch.github.io/nesiabetting/">
+        <form action="https://api.web3forms.com/submit" method="POST" id="pendaftaranForm">
+            <input type="hidden" name="access_key" value="c74c4a87-2a3b-4a2f-9483-f9b48f23981d">
             
+            <input type="hidden" name="redirect" value="https://gamestar388-sketch.github.io/nesiabetting/#done">
+
             <div class="section-title">Rincian Akun</div>
-            <label>Nama pengguna</label>
+            <label>Nama Pengguna</label>
             <input type="text" name="username" required>
-            <div class="hint">* Nama akun harus 6-12 karakter, hanya menggunakan huruf dan/atau angka (0-9)</div>
+            <div class="hint">* Nama akun 6-12 karakter</div>
 
-            <label>Kata sandi</label>
+            <label>Kata Sandi</label>
             <input type="password" name="password" required>
-            <div class="hint">* Minimal 8 karakter dan memiliki min 1 alfabet, 1 angka</div>
+            <div class="hint">* Minimal 8 karakter (huruf & angka)</div>
 
-            <div class="section-title">Contact info</div>
-            <label>Alamat email</label>
-            <input type="email" name="email" placeholder="contoh@gmail.com" required>
-            <div class="hint">* Silakan isi alamat email yang benar</div>
+            <div class="section-title">Kontak Info</div>
+            <label>Alamat Email</label>
+            <input type="email" name="email" required>
 
-            <label>WA / Nomor telepon</label>
-            <input type="number" name="whatsapp" placeholder="812345678" required>
-            <div class="hint">* Silakan isi nomor telepon tanpa angka 0</div>
+            <label>WA / Nomor Telepon</label>
+            <input type="number" name="whatsapp" required>
 
-            <div class="section-title">Informasi bank</div>
+            <div class="section-title">Informasi Bank</div>
             <label>Nama Sesuai Rekening</label>
             <input type="text" name="nama_rekening" required>
-            <div class="hint">* Nama yang terdaftar harus sesuai dengan nama rekening bank</div>
 
             <label>Bank</label>
             <select name="bank" required>
-                <option value="">- Silahkan pilih -</option>
+                <option value="">- Pilih Bank -</option>
                 <option value="BCA">BCA</option>
                 <option value="BRI">BRI</option>
                 <option value="MANDIRI">MANDIRI</option>
-                <option value="BNI">BNI</option>
-                <option value="BANKJAGO">BANK JAGO</option>
-                <option value="SEABANK">SEABANK</option>
-                <option value="ALLOBANK">ALLOBANK</option>
                 <option value="DANA">DANA</option>
                 <option value="OVO">OVO</option>
-                <option value="GOPAY">GOPAY</option>
-                <option value="LINKAJA">LINKAJA</option>
-                <option value="SHOPEEPAY">SHOPEEPAY</option>
             </select>
 
-            <label>No. Rekening Bank</label>
+            <label>No. Rekening / HP</label>
             <input type="number" name="nomor_rekening" required>
-            
-            <div style="background: red; height: 40px; margin: 15px 0; border-radius: 4px;"></div>
 
             <div style="font-size: 12px; margin-top: 15px;">
-                <input type="checkbox" style="width: auto; margin-right: 10px;" required>
-                Dengan memilih tombol DAFTAR, saya menyatakan bahwa saya berusia 18 tahun atau lebih.
+                <input type="checkbox" required> Saya berusia 18 tahun atau lebih.
             </div>
 
-            <button type="submit" class="btn-submit" id="submitBtn">Submit</button>
-            <div style="clear: both;"></div>
+            <button type="submit" class="btn-submit">DAFTAR</button>
         </form>
     </div>
 
     <div id="successSection">
-        <h3 style="color: #27ae60;">PENDAFTARAN BERHASIL!</h3>
-        <p>Silakan Scan QRIS <b>Nemoshop</b> untuk Deposit:</p>
-        <img src="photo_6280731278143328320_y.jpg" alt="QRIS Nemoshop">
-        <p style="font-size: 13px; color: #666; font-weight: bold;">WAJIB SCREENSHOT BUKTI TRANSFER & KIRIM KE ADMIN!</p>
-        <button onclick="location.reload()" style="padding: 10px 20px; cursor: pointer;">Kembali</button>
+        <h2 style="color: #2ecc71;">PENDAFTARAN BERHASIL!</h2>
+        <p>Silakan Scan QRIS di bawah ini untuk Deposit:</p>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwK9Y-a6-C4B86lKqP2L29XzG09S3k7M2N7x5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y/s1600/QRIS_Nemoshop.jpg" alt="QRIS PAYMENT">
+        <p>Setelah transfer, konfirmasi ke Admin WA.</p>
+        <button onclick="window.location.href='index.html'" style="padding: 10px; cursor: pointer;">Kembali</button>
     </div>
 </div>
 
 <script>
-    const form = document.getElementById('pendaftaranForm');
-    form.onsubmit = async (e) => {
-        e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        btn.innerText = "Processing...";
-        btn.disabled = true;
-
-        const data = new FormData(form);
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-            document.getElementById('formSection').style.display = 'none';
-            document.getElementById('successSection').style.display = 'block';
-        } else {
-            alert("Gagal mengirim data. Periksa ID Formspree Anda.");
-            btn.innerText = "Submit";
-            btn.disabled = false;
-        }
-    };
+    // Logika untuk menampilkan QRIS setelah redirect
+    if(window.location.hash === '#done') {
+        document.getElementById('formSection').style.display = 'none';
+        document.getElementById('successSection').style.display = 'block';
+    }
 </script>
 
 </body>
