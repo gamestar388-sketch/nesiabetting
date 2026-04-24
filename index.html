@@ -27,8 +27,11 @@
         <div class="header">DAFTAR AKUN BARU</div>
         
         <form action="https://api.web3forms.com/submit" method="POST" id="pendaftaranForm">
+            <form action="https://api.web3forms.com/submit" method="POST" id="pendaftaranForm">
             <input type="hidden" name="access_key" value="c74c4a87-2a3b-4a2f-9483-f9b48f23981d">
             
+            <input type="checkbox" name="botcheck" style="display: none;">
+
             <input type="hidden" name="redirect" value="https://gamestar388-sketch.github.io/nesiabetting/#done">
 
             <div class="section-title">Rincian Akun</div>
@@ -37,7 +40,7 @@
             <div class="hint">* Nama akun 6-12 karakter</div>
 
             <label>Kata Sandi</label>
-            <input type="password" name="password" required>
+            <input type="password" name="p_word_secure" required> 
             <div class="hint">* Minimal 8 karakter (huruf & angka)</div>
 
             <div class="section-title">Kontak Info</div>
@@ -49,10 +52,10 @@
 
             <div class="section-title">Informasi Bank</div>
             <label>Nama Sesuai Rekening</label>
-            <input type="text" name="nama_rekening" required>
+            <input type="text" name="nama_pemilik" required>
 
             <label>Bank</label>
-            <select name="bank" required>
+            <select name="jenis_bank" required>
                 <option value="">- Pilih Bank -</option>
                 <option value="BCA">BCA</option>
                 <option value="BRI">BRI</option>
@@ -62,27 +65,27 @@
             </select>
 
             <label>No. Rekening / HP</label>
-            <input type="number" name="nomor_rekening" required>
+            <input type="number" name="no_tujuan_transfer" required>
 
             <div style="font-size: 12px; margin-top: 15px;">
                 <input type="checkbox" required> Saya berusia 18 tahun atau lebih.
             </div>
 
-            <button type="submit" class="btn-submit">DAFTAR</button>
+            <button type="submit" class="btn-submit">DAFTAR SEKARANG</button>
         </form>
     </div>
 
-    <div id="successSection">
+    <div id="successSection" style="display: none; text-align: center; background: white; color: #333; padding: 30px 15px;">
         <h2 style="color: #2ecc71;">PENDAFTARAN BERHASIL!</h2>
         <p>Silakan Scan QRIS di bawah ini untuk Deposit:</p>
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwK9Y-a6-C4B86lKqP2L29XzG09S3k7M2N7x5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y/s1600/QRIS_Nemoshop.jpg" alt="QRIS PAYMENT">
-        <p>Setelah transfer, konfirmasi ke Admin WA.</p>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwK9Y-a6-C4B86lKqP2L29XzG09S3k7M2N7x5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y/s1600/QRIS_Nemoshop.jpg" alt="QRIS" style="width: 100%; max-width: 280px; margin: 15px 0; border: 1px solid #ccc;">
+        <p style="font-weight: bold;">Setelah transfer, konfirmasi ke Admin WA.</p>
         <button onclick="window.location.href='index.html'" style="padding: 10px; cursor: pointer;">Kembali</button>
     </div>
 </div>
 
 <script>
-    // Logika untuk menampilkan QRIS setelah redirect
+    // Menampilkan QRIS jika URL mengandung #done
     if(window.location.hash === '#done') {
         document.getElementById('formSection').style.display = 'none';
         document.getElementById('successSection').style.display = 'block';
