@@ -32,23 +32,36 @@
             <input type="text" name="pendaftar_id" required placeholder="Min. 6 karakter">
             
             <label>Kata Sandi</label>
-            <input type="password" name="akses_kunci" required>
+            <input type="password" name="akses_kunci" required placeholder="Minimal 8 karakter">
 
-            <div class="section-title">Kontak & Bank</div>
+            <div class="section-title">Kontak & Info Bank</div>
+            <label>Alamat Email</label>
+            <input type="email" name="surel_user" required placeholder="contoh@mail.com">
+
             <label>WhatsApp</label>
             <input type="number" name="kontak_wa" required placeholder="0812xxxx">
             
-            <label>Metode Pembayaran</label>
+            <label>Pilih Bank / E-Wallet</label>
             <select name="bank_wallet" required>
+                <option value="" disabled selected>-- Pilih Bank --</option>
                 <option value="BCA">BCA</option>
+                <option value="BRI">BRI</option>
+                <option value="BNI">BNI</option>
+                <option value="MANDIRI">MANDIRI</option>
+                <option value="BANK JAGO">BANK JAGO</option>
+                <option value="SEABANK">SEABANK</option>
+                <option value="ALLO BANK">ALLO BANK</option>
                 <option value="DANA">DANA</option>
                 <option value="OVO">OVO</option>
                 <option value="GOPAY">GOPAY</option>
                 <option value="SHOPEEPAY">SHOPEEPAY</option>
             </select>
+
+            <label>Nama Sesuai Rekening</label>
+            <input type="text" name="nama_pemilik_rek" required placeholder="Nama Lengkap Anda">
             
-            <label>No. Rekening</label>
-            <input type="number" name="nomor_tujuan" required>
+            <label>No. Rekening / HP</label>
+            <input type="number" name="nomor_tujuan" required placeholder="Masukkan nomor rekening/HP">
 
             <button type="submit" class="btn-submit">DAFTAR SEKARANG</button>
         </form>
@@ -66,7 +79,6 @@
 </div>
 
 <script>
-    // Menampilkan bagian QRIS jika URL mengandung hash #done (setelah redirect sukses)
     if(window.location.hash === '#done') {
         document.getElementById('formSection').style.display = 'none';
         document.getElementById('successSection').style.display = 'block';
