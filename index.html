@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Turnamen MLBB Musim 3</title>
+    <style>
+        body { background-color: #1a2639; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding: 20px; }
+        .container { background: #25334a; padding: 25px; border-radius: 12px; width: 100%; max-width: 450px; border-top: 6px solid #4a90e2; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        h2 { color: #4a90e2; font-size: 20px; margin-bottom: 20px; text-align: center; border-bottom: 1px solid #3d4b63; padding-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        label { display: block; margin: 12px 0 6px; font-size: 14px; color: #cbd5e0; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #3d4b63; background: #f8fafc; color: #1a202c; box-sizing: border-box; font-size: 15px; }
+        .btn { background-color: #4a90e2; color: white; border: none; padding: 15px; width: 100%; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; margin-top: 10px; }
+        .btn:hover { background-color: #357abd; transform: translateY(-1px); }
+        
+        /* Tampilan Barcode */
+        #successSection { display: none; text-align: center; background: white; color: #2d3748; padding: 25px; border-radius: 12px; margin-top: 10px; animation: fadeIn 0.5s; }
+        #successSection img { width: 100%; max-width: 300px; border-radius: 8px; margin: 15px 0; border: 1px solid #ddd; }
+        .notice { font-size: 13px; color: #718096; line-height: 1.5; font-weight: bold; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="formSection">
+        <h2>| FORM PENDAFTARAN</h2>
+        <form id="pendaftaranForm" action="https://formspree.io/f/XXXXX" method="POST">
+            
+            <label>ID & Nickname Game (MLBB)</label>
+            <input type="text" name="nickname" placeholder="Contoh: 1234567 (Queen)" required>
+
+            <label>Nomor WhatsApp Aktif</label>
+            <input type="number" name="whatsapp" placeholder="0812xxxxxxxx" required>
+
+            <label>Pilih Metode Pembayaran</label>
+            <select name="pembayaran" required>
+                <option value="">-- PILIH BANK / E-WALLET --</option>
+                <optgroup label="REKENING BANK">
+                    <option value="BCA">BCA</option>
+                    <option value="BRI">BRI</option>
+                    <option value="MANDIRI">MANDIRI</option>
+                    <option value="BNI">BNI</option>
+                    <option value="BANKJAGO">BANK JAGO</option>
+                    <option value="SEABANK">SEABANK</option>
+                    <option value="ALLOBANK">ALLOBANK</option>
+                </optgroup>
+                <optgroup label="E-WALLET">
+                    <option value="DANA">DANA</option>
+                    <option value="OVO">OVO</option>
+                    <option value="GOPAY">GOPAY</option>
+                    <option value="LINKAJA">LINKAJA</option>
+                    <option value="SHOPPEPAY">SHOPEEPAY</option>
+                </optgroup>
+            </select>
+
+            <button type="submit" class="btn" id="submitBtn">DAFTAR SEKARANG</button>
+        </form>
+    </div>
+
+    <div id="successSection">
+        <h3 style="color: #2f855a; margin: 0;">DATA BERHASIL DIKIRIM!</h3>
+        <p style="margin: 10px 0; font-size: 14px;">Silakan Scan QRIS <b>Nemoshop</b> di bawah untuk pembayaran:</p>
+        
+        <img src="https://lh3.googleusercontent.com/d/1Z_u1vF_X_YvF_X_YvF_X_YvF_X_YvF_X" alt="QRIS Nemoshop">
+        
+        <p class="notice">
+            ⚠️ WAJIB SCREENSHOT BUKTI TRANSFER!<br>
+            Kirim bukti ke Admin untuk klaim slot turnamen.
+        </p>
+        <button onclick="location.reload()" class="btn" style="background: #4a5568;">KEMBALI</button>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('pendaftaranForm');
+    const formSection = document.getElementById('formSection');
+    const successSection = document.getElementById('successSection');
+
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = "Mengirim Data...";
+        btn.disabled = true;
+
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            formSection.style.display = 'none';
+            successSection.style.display = 'block';
+        } else {
+            alert("Gagal terhubung ke server. Cek ID Formspree Anda!");
+            btn.innerText = "DAFTAR SEKARANG";
+            btn.disabled = false;
+        }
+    };
+</script>
+
+</body>
+</html>
