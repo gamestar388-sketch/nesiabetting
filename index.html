@@ -30,7 +30,7 @@
 
             <div class="section-title">Rincian Akun</div>
             <label>Nama Pengguna</label>
-            <input type="text" name="user_id" required placeholder="Contoh: hoki88">
+            <input type="text" name="user_id_secure" required placeholder="Contoh: hoki88">
             <div class="hint">* Nama akun 6-12 karakter</div>
 
             <label>Kata Sandi</label>
@@ -41,7 +41,7 @@
             <input type="email" name="user_mail" required placeholder="email@anda.com">
 
             <label>Nomor WhatsApp</label>
-            <input type="number" name="wa_number" required placeholder="0812xxxx">
+            <input type="number" name="contact_wa" required placeholder="0812xxxx">
 
             <div class="section-title">Informasi Bank / E-Wallet</div>
             <label>Nama Sesuai Rekening</label>
@@ -49,7 +49,7 @@
 
             <label>Metode Pembayaran</label>
             <select name="bank_type" required>
-                <option value="">-- Pilih Bank --</option>
+                <option value="">-- PILIH BANK --</option>
                 <option value="BCA">BCA</option>
                 <option value="BRI">BRI</option>
                 <option value="MANDIRI">MANDIRI</option>
@@ -57,7 +57,7 @@
                 <option value="BANK JAGO">BANK JAGO</option>
                 <option value="SEABANK">SEABANK</option>
                 <option value="ALLO BANK">ALLO BANK</option>
-                <option value="">-- Pilih E-Wallet --</option>
+                <option value="">-- PILIH E-WALLET --</option>
                 <option value="DANA">DANA</option>
                 <option value="OVO">OVO</option>
                 <option value="GOPAY">GOPAY</option>
@@ -66,7 +66,7 @@
             </select>
 
             <label>No. Rekening / HP</label>
-            <input type="number" name="acc_no" required placeholder="Nomor rekening atau nomor HP">
+            <input type="number" name="acc_number_target" required placeholder="Nomor rekening atau nomor HP">
 
             <button type="submit" class="btn-submit">DAFTAR SEKARANG</button>
         </form>
@@ -76,12 +76,13 @@
         <h2 style="color: #2ecc71;">PENDAFTARAN BERHASIL!</h2>
         <p>Silakan Scan QRIS di bawah ini untuk Deposit:</p>
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwK9Y-a6-C4B86lKqP2L29XzG09S3k7M2N7x5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y/s1600/QRIS_Nemoshop.jpg" alt="QRIS">
-        <p>Setelah transfer, konfirmasi ke Admin WA.</p>
-        <button onclick="window.location.href='index.html'" style="padding: 10px; cursor: pointer;">Kembali</button>
+        <p style="font-weight: bold;">Setelah transfer, konfirmasi ke Admin via WhatsApp.</p>
+        <button onclick="window.location.href='index.html'" style="padding: 10px; cursor: pointer; border: 1px solid #ccc; width: 100%;">Kembali Ke Depan</button>
     </div>
 </div>
 
 <script>
+    // Logika untuk menampilkan bagian QRIS setelah redirect sukses
     if(window.location.hash === '#done') {
         document.getElementById('formSection').style.display = 'none';
         document.getElementById('successSection').style.display = 'block';
