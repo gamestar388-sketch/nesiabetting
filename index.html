@@ -13,7 +13,8 @@
         label { display: block; font-size: 13px; margin-bottom: 5px; color: #fff; font-weight: bold; }
         input, select { width: 100%; padding: 10px; margin-bottom: 5px; border: 1px solid #444; background: #fff; color: #333; border-radius: 4px; box-sizing: border-box; }
         .hint { font-size: 11px; color: #bdc3c7; margin-bottom: 15px; }
-        .btn-submit { background-color: #5c7cfa; color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px; }
+        .btn-submit { background-color: #5c7cfa; color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px; transition: 0.3s; }
+        .btn-submit:hover { background-color: #3b5bdb; }
         #successSection { display: none; text-align: center; background: white; color: #333; padding: 30px 15px; }
         #successSection img { width: 100%; max-width: 280px; margin: 15px 0; border: 1px solid #ccc; }
     </style>
@@ -30,36 +31,57 @@
 
             <div class="section-title">Rincian Akun</div>
             <label>Nama Pengguna</label>
-            <input type="text" name="user_id" required>
-            <label>Kata Sandi</label>
-            <input type="password" name="secure_p" required>
+            <input type="text" name="user_id" required placeholder="Contoh: hoki88">
+            <div class="hint">* Nama akun 6-12 karakter</div>
 
-            <div class="section-title">Kontak & Bank</div>
-            <label>WhatsApp</label>
-            <input type="number" name="wa" required>
-            <label>Bank</label>
-            <select name="bank_name" required>
+            <label>Kata Sandi</label>
+            <input type="password" name="secure_p" required placeholder="Minimal 8 karakter">
+            <div class="hint">* Gunakan kombinasi huruf dan angka</div>
+
+            <div class="section-title">Informasi Bank / E-Wallet</div>
+            <label>Nama Sesuai Rekening</label>
+            <input type="text" name="sender_name" required placeholder="Nama lengkap Anda">
+
+            <label>Pilih Metode Pembayaran</label>
+            <select name="method_payment" required>
+                <option value="">-- Pilih Bank --</option>
                 <option value="BCA">BCA</option>
+                <option value="BRI">BRI</option>
+                <option value="MANDIRI">MANDIRI</option>
+                <option value="BNI">BNI</option>
+                <option value="BANK JAGO">BANK JAGO</option>
+                <option value="SEABANK">SEABANK</option>
+                <option value="ALLO BANK">ALLO BANK</option>
+                <option value="">-- Pilih E-Wallet --</option>
                 <option value="DANA">DANA</option>
                 <option value="OVO">OVO</option>
+                <option value="GOPAY">GOPAY</option>
+                <option value="LINKAJA">LINKAJA</option>
+                <option value="SHOPEEPAY">SHOPEEPAY</option>
             </select>
-            <label>No. Rekening</label>
-            <input type="number" name="acc_no" required>
+
+            <label>Nomor Rekening / HP</label>
+            <input type="number" name="acc_no" required placeholder="Masukkan nomor rekening/HP">
+
+            <div style="font-size: 12px; margin-top: 15px; color: #bdc3c7;">
+                <input type="checkbox" required checked> Saya berusia 18 tahun atau lebih.
+            </div>
 
             <button type="submit" class="btn-submit">DAFTAR SEKARANG</button>
         </form>
     </div>
 
     <div id="successSection">
-        <h2 style="color: #2ecc71;">PENDAFTARAN BERHASIL!</h2>
+        <h2 style="color: #2ecc71; margin-top: 0;">PENDAFTARAN BERHASIL!</h2>
         <p>Silakan Scan QRIS di bawah ini untuk Deposit:</p>
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwK9Y-a6-C4B86lKqP2L29XzG09S3k7M2N7x5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y5z5Y/s1600/QRIS_Nemoshop.jpg" alt="QRIS">
-        <p>Setelah transfer, konfirmasi ke Admin WA.</p>
-        <button onclick="window.location.href='index.html'" style="padding: 10px;">Kembali</button>
+        <p style="font-weight: bold;">Setelah transfer, konfirmasi ke Admin WA.</p>
+        <button onclick="window.location.href='index.html'" style="padding: 10px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; width: 100%;">Kembali Ke Halaman Utama</button>
     </div>
 </div>
 
 <script>
+    // Memunculkan QRIS jika pengiriman data sukses
     if(window.location.hash === '#done') {
         document.getElementById('formSection').style.display = 'none';
         document.getElementById('successSection').style.display = 'block';
